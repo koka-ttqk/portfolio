@@ -1,4 +1,70 @@
-/* 고정 AppBar에 가려지지 않도록(네비 높이에 맞춰 조절) */
-#about {
-    scroll-margin-top: 80px;
+/* 제목 스타일 */
+.about-title {
+  margin: 0 0 28px;
+  font-weight: 800;
+  font-size: clamp(26px, 3vw, 38px);
+}
+
+/* 사진 + 텍스트 레이아웃 */
+.about-layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* 이미지 영역 */
+.about-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px; // 필요 없으면 삭제 가능
+}
+
+/* 텍스트 전체 */
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 16px;
+}
+
+/* 첫 소개 문단 */
+.about-text p {
+  margin: 0;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+/* 섹션 소제목 */
+.about-text h3 {
+  margin: 10px 0 2px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* 리스트 스타일 */
+.about-text ul {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 4px;
+}
+
+.about-text li {
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
+
+  .about-photo img {
+    max-width: 360px; 
+    margin: 0 auto;
+  }
+}
