@@ -1,3 +1,7 @@
+#about {
+  scroll-margin-top: 18px;
+}
+
 /* 제목 스타일 */
 .about-title {
   margin: 0 0 28px;
@@ -8,7 +12,7 @@
 /* 사진 + 텍스트 레이아웃 */
 .about-layout {
   display: grid;
-  grid-template-columns: 420px 1fr;
+  grid-template-columns: 400px 1fr;
   gap: 40px;
   align-items: start;
 }
