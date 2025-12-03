@@ -1,0 +1,137 @@
+/* Title */
+.skills-title {
+  margin: 0 0 28px;
+  font-weight: 800;
+  font-size: clamp(26px, 3vw, 38px);
+}
+
+/* ===== TOP: Circle Cards ===== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-bottom: 28px;
+
+  @media (max-width: 1024px) { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 640px)  { grid-template-columns: 1fr; }
+}
+
+.skill-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.08),
+    0 2px 6px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.skill-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.12),
+    0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* Circle progress (CSS only) */
+.circle {
+  /* --p: 75; // TS에서 인라인으로 주입됨 */
+  --size: 122px;
+  --accent: #635bff;
+  --track: #e5e7eb;
+
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* NOTE: 여기에는 mask를 두지 않습니다 */
+}
+
+/* 링은 ::before에 그려 마스크 영향 범위를 가상요소로 한정 */
+.circle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(var(--accent) calc(var(--p) * 1%), var(--track) 0);
+  -webkit-mask: radial-gradient(farthest-side, transparent 58%, #000 59%);
+          mask: radial-gradient(farthest-side, transparent 58%, #000 59%);
+}
+
+/* 중앙 숫자를 위로 올림 */
+.circle .num {
+  position: relative;   /* z-index가 먹도록 */
+  z-index: 1;
+  font-size: 20px;
+  font-weight: 800;
+  color: #0d1116;
+}
+
+.card-title {
+  margin: 2px 0 4px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0d1116;
+}
+
+.card-sub {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  text-align: center;
+
+  strong { font-size: 16px; color: #0d1116; }
+  span   { font-size: 12px; color: #6b7280; }
+}
+
+/* ===== BOTTOM: Linear Bars ===== */
+.bars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 32px;
+
+  @media (max-width: 900px) { grid-template-columns: 1fr; }
+}
+
+.bar-row { width: 100%; }
+
+.bar-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+
+  span { color: #0d1116; }
+  .val { color: #4b5563; font-weight: 700; }
+}
+
+.bar-track {
+  width: 100%;
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: #635bff;
+  border-radius: 999px;
+  transition: width .4s ease;
+}
+
+/* ===== Dark mode ===== */
+.dark-mode .skill-card { background: #14171e; }
+.dark-mode .circle { --track: #2a303b; }
+.dark-mode .circle .num { color: #f5f5f7; }
+.dark-mode .card-title  { color: #f5f5f7; }
+.dark-mode .card-sub strong { color: #f5f5f7; }
+.dark-mode .card-sub span   { color: #cbd5e1; }
+.dark-mode .bar-label span  { color: #f5f5f7; }
+.dark-mode .bar-label .val  { color: #cbd5e1; }
+.dark-mode .bar-track       { background: #2a303b; }
