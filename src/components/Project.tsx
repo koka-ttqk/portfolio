@@ -1,74 +1,87 @@
-import React from "react";
-import mock01 from '../assets/images/mock01.png';
-import mock02 from '../assets/images/mock02.png';
-import mock03 from '../assets/images/mock03.png';
-import mock04 from '../assets/images/mock04.png';
-import mock05 from '../assets/images/mock05.png';
-import mock06 from '../assets/images/mock06.png';
-import mock07 from '../assets/images/mock07.png';
-import mock08 from '../assets/images/mock08.png';
-import mock09 from '../assets/images/mock09.png';
-import mock10 from '../assets/images/mock10.png';
-import '../assets/styles/Project.scss';
+// Project.tsx
+import React, { useState } from "react";
+import "../assets/styles/Project.scss";
 
-function Project() {
-    return(
+import proj1 from "../assets/images/proj_websec.png";
+import proj2 from "../assets/images/proj_packet.png";
+import proj3 from "../assets/images/proj_script.png";
+
+type ProjectType = {
+  id: number;
+  title: string;
+  thumbnail: string;
+  summary: string;
+  details: string;
+};
+
+export default function Project() {
+  const [activeProject, setActiveProject] = useState<ProjectType | null>(null);
+
+  const projects: ProjectType[] = [
+    {
+      id: 1,
+      title: "Web Vulnerability Practice Lab",
+      thumbnail: proj1,
+      summary: "OWASP Juice Shop 기반 웹 취약점 실습 및 분석 프로젝트",
+      details: `
+      ✔ XSS, CSRF, Broken Authentication 등 주요 취약점 재현
+      ✔ Burp Suite를 활용한 Request/Response 분석
+      ✔ 취약점 발생 원리 및 대응 방안 문서화
+      ✔ OWASP Top 10 기반 실제 공격 흐름 이해 강화
+      `,
+    },
+    {
+      id: 2,
+      title: "Network Packet Analysis",
+      thumbnail: proj2,
+      summary: "Wireshark 기반 네트워크 패킷 분석 프로젝트",
+      details: `
+      ✔ TCP/UDP 3-way handshake 분석
+      ✔ ARP Spoofing 탐지 패턴 분석
+      ✔ ICMP Flood 패킷 캡처 및 필터링
+      ✔ 네트워크 공격 패턴 이해 및 로그 분석 경험
+      `,
+    },
+    {
+      id: 3,
+      title: "Security Automation Scripting",
+      thumbnail: proj3,
+      summary: "Python 기반 보안 자동화 스크립트 제작",
+      details: `
+      ✔ 민감 정보 파일 탐지 스크립트
+      ✔ 보안 Header 체크 자동화 도구 개발
+      ✔ 간단한 포트 스캐너(Python socket)
+      ✔ 보안 점검 업무 간소화 목적
+      `,
+    },
+  ];
+
+  return (
     <div className="projects-container" id="projects">
-        <h1>Personal Projects</h1>
-        <div className="projects-grid">
-            <div className="project">
-                <a href="https://www.filmate.club/" target="_blank" rel="noreferrer"><img src={mock10} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://www.filmate.club/" target="_blank" rel="noreferrer"><h2>Filmate AI</h2></a>
-                <p>Developed movie finder app with semantic search and sentiment analysis using OpenAI GPT-3.5 Turbo, Qdrant, React, and Flask.</p>
-            </div>
-            <div className="project">
-                <a href="https://yujisatojr.itch.io/highspeedchase" target="_blank" rel="noreferrer"><img src={mock09} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://yujisatojr.itch.io/highspeedchase" target="_blank" rel="noreferrer"><h2>High Speed Chase</h2></a>
-                <p>Designed, developed, and launched a 3D multiplayer racing game with C# and Unity. This is available on Itch.io for gamers worldwide to enjoy.</p>
-            </div>
-            <div className="project">
-                <a href="https://yujisatojr.itch.io/spacecraft" target="_blank" rel="noreferrer"><img src={mock08} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://yujisatojr.itch.io/spacecraft" target="_blank" rel="noreferrer"><h2>Astro Raiders</h2></a>
-                <p>Developed and released a 2D shooting game with C# and Unity. This project is hosted on the Itch.io public marketplace.</p>
-            </div>
-            <div className="project">
-                <a href="https://www.datumlearn.com/" target="_blank" rel="noreferrer"><img src={mock07} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://www.datumlearn.com/" target="_blank" rel="noreferrer"><h2>Datum: Integrated Learning Platform</h2></a>
-                <p>This is an online educational platform that provides high-quality, data science-focused learning resources in the Japanese language. I created the entire platform from scratch using Ruby on Rails.</p>
-            </div>
-            <div className="project">
-                <a href="http://www.wemanage.jp/" target="_blank" rel="noreferrer"><img src={mock06} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="http://www.wemanage.jp/" target="_blank" rel="noreferrer"><h2>WeManage: Real Estate Asset Management</h2></a>
-                <p>This mobile application allows realtors in Japan to securely manage their property information and view future income predictions. This app is built with Ruby on Rails and JavaScript.</p>
-            </div>
-            <div className="project">
-                <a href="https://www.byuh.edu/covid-19-case-management" target="_blank" rel="noreferrer"><img src={mock05} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://www.byuh.edu/covid-19-case-management" target="_blank" rel="noreferrer"><h2>COVID-19 Case Management</h2></a>
-                <p>Built official charts for COVID/vaccination tracking for an educational institution using JavaScript and the Google Sheets API v4. The dashboard served the university's leadership in their decision-making processes.</p>
-            </div>
-            <div className="project">
-                <a href="https://github.com/yujisatojr/multi-reg-analysis" target="_blank" rel="noreferrer"><img src={mock04} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://github.com/yujisatojr/multi-reg-analysis" target="_blank" rel="noreferrer"><h2>Multiple Regression Property Analysis</h2></a>
-                <p>Analyzed the real estate market in Japan and predicted property prices by implementing statistical methods such as OLS and multi-regression analysis. This project leveraged Python and various libraries such as Pandas, NumPy, Matplotlib, and Scikit-Learn.</p>
-            </div>
-            <div className="project">
-                <a href="https://holokai.byuh.edu/programs-of-study" target="_blank" rel="noreferrer"><img src={mock03} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://holokai.byuh.edu/programs-of-study" target="_blank" rel="noreferrer"><h2>Programs of Study</h2></a>
-                <p>Designed and developed a custom component for a CMS-based platform (e.g., 'Brightspot') using Java, Handlebars, and LESS. University students can find their majors of interest through this module.</p>
-            </div>
-            <div className="project">
-                <a href="https://hookele.byuh.edu/transfer-evaluation-guidelines-and-matrix" target="_blank" rel="noreferrer"><img src={mock02} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://hookele.byuh.edu/transfer-evaluation-guidelines-and-matrix" target="_blank" rel="noreferrer"><h2>Transfer Evaluation Matrix</h2></a>
-                <p>Created an interactive CSV table generator with Java, Handlebars, and LESS. This project helps transfer students to quickly identify eligible credits.</p>
-            </div>
-            <div className="project">
-                <a href="https://github.com/yujisatojr/submeowrine" target="_blank" rel="noreferrer"><img src={mock01} className="zoom" alt="thumbnail" width="100%"/></a>
-                <a href="https://github.com/yujisatojr/submeowrine" target="_blank" rel="noreferrer"><h2>Submeowrine</h2></a>
-                <p>Developed and released an Android mobile application using Java and Android Studio that runs a 2D shooting game.</p>
-            </div>
-        </div>
-    </div>
-    );
-}
+      <h1>Security Projects</h1>
 
-export default Project;
+      <div className="projects-grid">
+        {projects.map((p) => (
+          <div className="project" key={p.id} onClick={() => setActiveProject(p)}>
+            <img src={p.thumbnail} className="zoom" alt={p.title} width="100%" />
+            <h2>{p.title}</h2>
+            <p>{p.summary}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* 모달 */}
+      {activeProject && (
+        <div className="modal-overlay" onClick={() => setActiveProject(null)}>
+          <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+            <h2>{activeProject.title}</h2>
+            <p className="modal-detail">{activeProject.details}</p>
+            <button className="close-btn" onClick={() => setActiveProject(null)}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

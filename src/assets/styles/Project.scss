@@ -3,47 +3,92 @@
     flex-direction: column;
     padding: 5% 10%;
     text-align: left;
-}
   
-.projects-container .projects-grid {
+    h1 {
+      font-size: clamp(26px, 3vw, 42px);
+      font-weight: 800;
+      margin-bottom: 40px;
+    }
+  }
+  
+  .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 50px;
-}
+    gap: 50px;
+  }
   
-.projects-container .projects-grid .project {
-    text-align: left;
-}
+  .project {
+    cursor: pointer;
+  }
   
-.project h2:hover {
+  .project h2:hover {
     text-decoration: underline;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
-}
+    transition: color 0.15s ease-in-out;
+  }
   
-.zoom {
-    border-radius: 5px;
-    transition: transform .2s;
+  .zoom {
+    border-radius: 6px;
+    transition: transform 0.2s;
     margin: 0 auto;
-}
+  }
   
-.zoom:hover {
+  .zoom:hover {
     transform: scale(1.05);
-}
-
-@media screen {
-    @media (max-width: 700px) {
-        .projects-container {
-            display: block;
-            padding-left: 5%;
-            padding-right: 5%;
-        }
+  }
   
-        .projects-container .projects-grid {
-            display: block;
-        }
-      
-        .projects-container .projects-grid .project {
-            padding-bottom: 5%;
-        }
+  /* 반응형 */
+  @media (max-width: 700px) {
+    .projects-container {
+      padding: 5%;
     }
-}
+  
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+  
+  /* ====== Modal ====== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    backdrop-filter: blur(4px);
+  }
+  
+  .modal-box {
+    background: #181a20;
+    padding: 30px 40px;
+    border-radius: 12px;
+    width: min(500px, 90%);
+    color: #fff;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+  }
+  
+  .modal-detail {
+    white-space: pre-line;
+    margin: 20px 0;
+    color: #cbd5e1;
+    font-size: 15px;
+  }
+  
+  .close-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #605cff;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #fff;
+    transition: 0.2s;
+  }
+  
+  .close-btn:hover {
+    background: #4f48ff;
+  }  
