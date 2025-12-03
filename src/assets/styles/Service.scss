@@ -1,0 +1,96 @@
+/* Title */
+.services-title {
+    margin: 0 0 28px;
+    font-weight: 800;
+    font-size: clamp(26px, 3vw, 38px);
+  }
+  
+  /* Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  
+    @media (max-width: 1024px) { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 640px)  { grid-template-columns: 1fr; }
+  }
+  
+  /* Card */
+  .svc-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 28px 24px;
+    text-align: center;
+    box-shadow:
+      0 6px 16px rgba(0,0,0,.08),
+      0 2px 6px rgba(0,0,0,.04);
+    transition: transform .15s ease, box-shadow .15s ease;
+  
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 10px 24px rgba(0,0,0,.12),
+        0 4px 10px rgba(0,0,0,.06);
+    }
+  }
+  
+  /* Icon ring */
+  .svc-icon {
+    --ring: #635bff;
+    width: 104px;
+    height: 104px;
+    margin: 0 auto 16px;
+    border-radius: 9999px;
+    border: 7px solid var(--ring);
+    background: #ffffff;
+    display: grid;
+    place-items: center;
+  
+    svg { font-size: 42px; color: #0d1116; }
+  }
+  
+  /* Title */
+  .svc-title {
+    margin: 4px 0 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #0d1116;
+  }
+  
+  /* 리스트 전체를 왼쪽 정렬 */
+  .svc-points {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;     /* ← 가운데 정렬 제거 */
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  /* li 기본 스타일 */
+  .svc-points li {
+    position: relative;
+    padding-left: 62px;    /* 체크 아이콘 들어갈 여백 */
+    font-size: 13px;
+    line-height: 1.55;
+    color: #4b5563;
+  }
+  
+  /* 체크 아이콘 넣기 */
+  .svc-points li::before {
+    content: "✔";          /* ← 체크 표시 */
+    position: absolute;
+    left: 25px;
+    top: 0;
+    font-size: 12px;
+    color: #635bff;         /* 블루 컬러(원형과 동일) */
+  }
+  
+  /* Dark mode */
+  .dark-mode .svc-card { background: #14171e; }
+  .dark-mode .svc-icon { background: #14171e; --ring: #7c75ff; }
+  .dark-mode .svc-icon svg { color: #f5f5f7; }
+  .dark-mode .svc-title { color: #f5f5f7; }
+  .dark-mode .svc-points li { color: #cbd5e1; }
+  .dark-mode .svc-points li::before { color: #8b8dfc; }
