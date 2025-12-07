@@ -67,6 +67,7 @@
     width: min(500px, 90%);
     color: #fff;
     box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+    * { color: inherit; }
   }
   
   .modal-detail {
@@ -92,3 +93,35 @@
   .close-btn:hover {
     background: #4f48ff;
   }  
+
+  /* ====== Light mode overrides ====== */
+.light-mode .modal-overlay {
+  background: rgba(0,0,0,0.45);
+}
+
+.light-mode .modal-box {
+  background: #ffffff;
+  color: #0d1116; /* 기본 텍스트 */
+  box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+}
+
+/* 전역 p/h1~h5 규칙보다 특이성 높게: 모달 내부 텍스트는 상속 유지 */
+.light-mode .modal-box h1,
+.light-mode .modal-box h2,
+.light-mode .modal-box h3,
+.light-mode .modal-box p,
+.light-mode .modal-box li,
+.light-mode .modal-box a,
+.light-mode .modal-box label,
+.light-mode .modal-box button {
+  color: inherit;
+}
+
+.light-mode .modal-box .modal-detail {
+  color: #374151; /* 본문용 중간 톤 */
+}
+
+.light-mode .modal-box .close-btn {
+  background: #4f46e5;
+  color: #fff;
+}
